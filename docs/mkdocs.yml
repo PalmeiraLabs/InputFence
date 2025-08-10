@@ -1,0 +1,36 @@
+site_name: InputFence Documentation
+theme:
+  name: material
+use_directory_urls: false
+nav:
+  - Home: index.md
+
+  - Concrete Validators:
+    - Advanced Date of Birth Validator: advanced-date-of-birth.md
+    - Advanced Name Validator: advanced-name.md
+    - Advanced Password Validator: advanced-password.md
+    - Advanced Phone Validator: advanced-phone.md
+    - RFC Compliant Email Validator: rfc-compliant-email.md
+    - Simple Email Validator: simple-email.md
+    - Smart Email Validator: smart-email.md
+    
+  - Main validator (uses generics for the concrete validator):
+    - Field Validator: field-validator.md
+
+  - Protocols:
+    - Date of Birth Validator Protocol: dateofbirth-validator-protocol.md
+    - Email Validator Protocol: email-validator-protocol.md
+    - Name Validator Protocol: name-validator-protocol.md
+    - Password Validator Protocol: password-validator-protocol.md
+    - Phone Validator Protocol: phone-validator-protocol.md
+    - Validator Protocol: validator-protocol.md
+    - Protocols Overview: protocols.md
+
+  - Parameters:
+    - Name Validator Parameters: name-validator-parameters.md
+    - Password Validator Parameters: password-validator-parameters.md
+    - Phone Validator Parameters: phone-validator-parameters.md
+    - Date of Birth Validator Parameters: date-of-birth-validator-parameters.md
+
+  - Other:
+    - Typealiases: typealiases.md

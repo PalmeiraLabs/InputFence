@@ -108,6 +108,28 @@ print(wrappedPassword.isValid()) // false
 - Protocols (EmailValidatorProtocol, etc.) → Define the validation rules.
 - Concrete implementations (SimpleEmailValidator, AdvancedPasswordValidator, etc.) → Actual validation logic.
 
+## 📚 Documentation
+
+For detailed guides, API reference, and validator specifications, check out the full documentation:
+
+- **Online Docs** → [InputFence Documentation](https://palmeiralabs.github.io/InputFence/)  
+- **Local Docs**  
+  1. Clone this repository.
+  2. Install MkDocs (if you don’t have it):
+     ```bash
+     pip install mkdocs-material
+     ```
+  3. Serve the documentation locally:
+     ```bash
+     mkdocs serve
+     ```
+  4. Open `http://127.0.0.1:8000` in your browser.
+
+Documentation source files are located in the [`docs/`](docs/) directory and include:
+- **Validators** → Usage of each built-in validator.
+- **Protocols** → Interfaces and extension points.
+- **Parameters** → Customization and configuration options.
+
 ---
 
 ## 📄 License
