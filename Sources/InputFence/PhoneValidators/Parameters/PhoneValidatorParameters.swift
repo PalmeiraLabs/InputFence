@@ -36,6 +36,19 @@ public struct PhoneValidatorParameters {
         self.isOnlyNumbersAllowed = isOnlyNumbersAllowd
         self.region = region
     }
+
+    /// Creates a new instance of `PhoneValidatorParameters`.
+    ///
+    /// - Parameters:
+    ///   - isOnlyNumbersAllowed: If true, only numeric characters are allowed in the phone number.
+    ///   - region: The region code used for validation. Defaults to `"US"`.
+    public init(
+        isOnlyNumbersAllowed: Bool,
+        region: String = Self.defaultRegion
+    ) {
+        self.isOnlyNumbersAllowed = isOnlyNumbersAllowed
+        self.region = region
+    }
 }
 
 public extension PhoneValidatorParameters {

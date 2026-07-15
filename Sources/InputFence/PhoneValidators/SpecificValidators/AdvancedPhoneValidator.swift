@@ -1,12 +1,3 @@
-//
-//  AdvancedPhoneValidator.swift
-//  InputFence
-//
-//  Created by Agustin Palmeira on 06/08/2025.
-//
-
-import PhoneNumberKit
-
 /// Validator that checks if a phone number string is valid according to the provided parameters.
 ///
 /// This validator uses the `PhoneNumberKit` library to parse and validate phone numbers
@@ -28,13 +19,18 @@ public struct AdvancedPhoneValidator: PhoneValidatorProtocol {
     /// Configuration parameters defining validation rules for the phone number.
     public var parameters: PhoneValidatorParameters
 
-    private let phoneNumberKit = PhoneNumberKit()
+    private let parser: PhoneNumberParsing
 
     /// Initializes the validator with optional custom parameters.
     ///
     /// - Parameter parameters: Validation configuration. Defaults to `PhoneValidatorParameters()` with default region "US" and no numeric-only restriction.
     public init(parameters: PhoneValidatorParameters = .init()) {
+        self.init(parameters: parameters, parser: PhoneNumberKitParser())
+    }
+
+    init(parameters: PhoneValidatorParameters = .init(), parser: PhoneNumberParsing) {
         self.parameters = parameters
+        self.parser = parser
     }
 
     /// Validates if the given string is a valid phone number according to the parameters.
@@ -48,14 +44,7 @@ public struct AdvancedPhoneValidator: PhoneValidatorProtocol {
             return false
         }
 
-        do {
-            _ = try phoneNumberKit.parse(value,
-                                         withRegion: parameters.region,
-                                         ignoreType: true)
-            return true
-        } catch {
-            return false
-        }
+        return parser.canParse(value, region: parameters.region)
     }
 
     /// Checks if the string contains only numeric characters.

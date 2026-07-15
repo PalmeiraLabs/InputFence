@@ -5,6 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "InputFence",
+    platforms: [
+        .iOS(.v12),
+        .macOS(.v10_13),
+        .tvOS(.v12),
+        .watchOS(.v4)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -20,8 +26,8 @@ let package = Package(
         .target(
             name: "InputFence",
             dependencies: [
-            .product(name: "PhoneNumberKit", package: "PhoneNumberKit")
-        ]),
+                .product(name: "PhoneNumberKit", package: "PhoneNumberKit")
+            ]),
         .testTarget(
             name: "InputFenceTests",
             dependencies: ["InputFence"]
