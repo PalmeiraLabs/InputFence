@@ -13,11 +13,13 @@
 
 ## Initializer
 ```swift
-init(isOnlyNumbersAllowd: Bool = Self.defaultIsOnlyNumbersAllowed,
+init(isOnlyNumbersAllowed: Bool,
      region: String = Self.defaultRegion)
 ```
 
+The legacy initializer label `isOnlyNumbersAllowd` remains available for source compatibility.
+
 ## Usage Example
 ```swift
-let params = PhoneValidatorParameters(isOnlyNumbersAllowd: true, region: "UK")
+let params = PhoneValidatorParameters(isOnlyNumbersAllowed: true, region: "UK")
 ```

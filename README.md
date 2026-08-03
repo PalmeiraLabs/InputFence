@@ -4,6 +4,8 @@ It provides ready-to-use validators for common fields such as **email addresses,
 
 Built for clean architectures, reusable logic, and full SwiftPM support.
 
+Supported platforms: iOS 12+, macOS 10.13+, tvOS 12+, and watchOS 4+.
+
 ---
 
 ## ✨ Features
@@ -52,11 +54,18 @@ if validator.isValid("12/08/1995") {
 ```swift
 import InputFence
 
-let validator = UsernameValidator(
-    parameters: UsernameValidatorParameters(minLength: 3, maxLength: 20)
+let usernameRules = NameValidatorParameters(
+    minAmountOfCharacters: 3,
+    maxAmountOfCharacters: 20,
+    shouldHaveOnlyLetters: false
 )
 
-if validator.isValid("Agustin") {
+let validator = UsernameValidator(
+    validator: AdvancedNameValidator(parameters: usernameRules),
+    value: "Agustin"
+)
+
+if validator.isValid() {
     print("Valid username ✅")
 } else {
     print("Invalid username ❌")
@@ -75,10 +84,10 @@ print(emailValidator.isValid("invalid-email"))    // false
 
 // Example 2: Use an advanced password validator with custom parameters
 let passwordParams = PasswordValidatorParameters(
-    minLength: 8,
-    requireUppercase: true,
-    requireNumber: true,
-    requireSpecialCharacter: true
+    minAmountOfCharacters: 8,
+    maxAmountOfCharacters: 30,
+    minAmountOfSpecialCharacters: 1,
+    minAmountOfNumbers: 1
 )
 let passwordValidator = AdvancedPasswordValidator(parameters: passwordParams)
 print(passwordValidator.isValid("P@ssword1")) // true

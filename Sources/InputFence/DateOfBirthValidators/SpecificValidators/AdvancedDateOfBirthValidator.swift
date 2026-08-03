@@ -21,12 +21,25 @@ public struct AdvancedDateOfBirthValidator: DateOfBirthValidatorProtocol {
     
     /// Configuration parameters that define minimum and maximum allowed ages for validation.
     public var parameters: DateOfBirthValidatorParameters
+
+    private let dateProvider: DateProviding
+    private let calendar: Calendar
     
     /// Initializes the validator with custom parameters.
     ///
     /// - Parameter parameters: Configuration defining valid age range. Defaults to `DateOfBirthValidatorParameters()` with minAge 18 and maxAge 120.
     public init(parameters: DateOfBirthValidatorParameters = .init()) {
+        self.init(parameters: parameters, dateProvider: SystemDateProvider(), calendar: .current)
+    }
+
+    init(
+        parameters: DateOfBirthValidatorParameters = .init(),
+        dateProvider: DateProviding,
+        calendar: Calendar = .current
+    ) {
         self.parameters = parameters
+        self.dateProvider = dateProvider
+        self.calendar = calendar
     }
     
     /// Validates if the given date of birth string is valid.
@@ -69,11 +82,12 @@ public struct AdvancedDateOfBirthValidator: DateOfBirthValidatorProtocol {
     /// - Parameter dateOfBirth: Date of birth.
     /// - Returns: `true` if age is within `parameters.minAge` and `parameters.maxAge`.
     ///
-    /// - Note: This method relies on the system calendar and date settings, which can be modified by the user.
+    /// - Note: This method uses the injected `calendar` and `dateProvider`; by default these are `.current`
+    ///   and `SystemDateProvider()`, so behavior still follows the system calendar and date settings.
     private func validateAge(dateOfBirth: Date) -> Bool {
-        let now = Date()
+        let now = dateProvider.now
         
-        guard let age = Calendar.current.dateComponents([.year], from: dateOfBirth, to: now).year else {
+        guard let age = calendar.dateComponents([.year], from: dateOfBirth, to: now).year else {
              return false
          }
 
@@ -93,9 +107,9 @@ public struct AdvancedDateOfBirthValidator: DateOfBirthValidatorProtocol {
     /// - Parameter date: Date to check.
     /// - Returns: `true` if date is in the future, `false` otherwise.
     ///
-    /// - Note: This method relies on the system date settings, which can be modified by the user.
+    /// - Note: This method compares against `dateProvider.now` (defaults to system date settings via `SystemDateProvider`).
     private func isInFuture(_ date: Date) -> Bool {
-        return date > Date()
+        return date > dateProvider.now
     }
     
     /// Parses a date of birth string into a `Date` object.

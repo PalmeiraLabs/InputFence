@@ -27,13 +27,27 @@ public struct PhoneValidatorParameters {
     /// Creates a new instance of `PhoneValidatorParameters`.
     ///
     /// - Parameters:
-    ///   - isOnlyNumbersAllowed: If true, only numeric characters are allowed in the phone number. Defaults to `false`.
+    ///   - isOnlyNumbersAllowd: If true, only numeric characters are allowed in the phone number. Defaults to `false`.
     ///   - region: The region code used for validation. Defaults to `"US"`.
+    @available(*, deprecated, renamed: "init(isOnlyNumbersAllowed:region:)")
     public init(
         isOnlyNumbersAllowd: Bool = Self.defaultIsOnlyNumbersAllowed,
         region: String = Self.defaultRegion
     ) {
         self.isOnlyNumbersAllowed = isOnlyNumbersAllowd
+        self.region = region
+    }
+
+    /// Creates a new instance of `PhoneValidatorParameters`.
+    ///
+    /// - Parameters:
+    ///   - isOnlyNumbersAllowed: If true, only numeric characters are allowed in the phone number.
+    ///   - region: The region code used for validation. Defaults to `"US"`.
+    public init(
+        isOnlyNumbersAllowed: Bool,
+        region: String = Self.defaultRegion
+    ) {
+        self.isOnlyNumbersAllowed = isOnlyNumbersAllowed
         self.region = region
     }
 }
