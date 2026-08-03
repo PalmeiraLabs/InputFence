@@ -107,7 +107,7 @@ public struct AdvancedDateOfBirthValidator: DateOfBirthValidatorProtocol {
     /// - Parameter date: Date to check.
     /// - Returns: `true` if date is in the future, `false` otherwise.
     ///
-    /// - Note: This method relies on the system date settings, which can be modified by the user.
+    /// - Note: This method compares against `dateProvider.now` (defaults to system date settings via `SystemDateProvider`).
     private func isInFuture(_ date: Date) -> Bool {
         return date > dateProvider.now
     }
