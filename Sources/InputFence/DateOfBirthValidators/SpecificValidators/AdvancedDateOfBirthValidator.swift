@@ -82,7 +82,8 @@ public struct AdvancedDateOfBirthValidator: DateOfBirthValidatorProtocol {
     /// - Parameter dateOfBirth: Date of birth.
     /// - Returns: `true` if age is within `parameters.minAge` and `parameters.maxAge`.
     ///
-    /// - Note: This method relies on the system calendar and date settings, which can be modified by the user.
+    /// - Note: This method uses the injected `calendar` and `dateProvider`; by default these are `.current`
+    ///   and `SystemDateProvider()`, so behavior still follows the system calendar and date settings.
     private func validateAge(dateOfBirth: Date) -> Bool {
         let now = dateProvider.now
         
