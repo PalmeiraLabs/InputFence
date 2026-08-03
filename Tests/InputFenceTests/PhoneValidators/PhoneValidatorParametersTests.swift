@@ -9,6 +9,7 @@ final class PhoneValidatorParametersTests: XCTestCase {
         XCTAssertEqual(parameters.region, "US")
     }
 
+    @available(*, deprecated, message: "Exercises the deprecated compatibility initializer.")
     func test_init_whenLegacyArgumentLabelIsUsed_storesOverrides() {
         let parameters = PhoneValidatorParameters(isOnlyNumbersAllowd: true, region: "AR")
 

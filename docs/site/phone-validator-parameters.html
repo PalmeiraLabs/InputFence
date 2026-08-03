@@ -8,6 +8,8 @@
       
       
       
+        <link rel="canonical" href="https://palmeiralabs.github.io/InputFence/phone-validator-parameters.html">
+      
       
         <link rel="prev" href="password-validator-parameters.html">
       
@@ -1262,12 +1264,15 @@
 <li><code>defaultRegion</code>: "US"</li>
 </ul>
 <h2 id="initializer">Initializer</h2>
-<pre><code class="language-swift">init(isOnlyNumbersAllowed: Bool,
+<pre><code class="language-swift">init()
+
+init(isOnlyNumbersAllowed: Bool,
      region: String = Self.defaultRegion)
 </code></pre>
-<p>The legacy initializer label <code>isOnlyNumbersAllowd</code> remains available for source compatibility.</p>
+<p>Use <code>init()</code> for the documented defaults. The legacy initializer label <code>isOnlyNumbersAllowd</code> remains available for source compatibility.</p>
 <h2 id="usage-example">Usage Example</h2>
-<pre><code class="language-swift">let params = PhoneValidatorParameters(isOnlyNumbersAllowed: true, region: &quot;UK&quot;)
+<pre><code class="language-swift">let defaultParams = PhoneValidatorParameters()
+let params = PhoneValidatorParameters(isOnlyNumbersAllowed: true, region: &quot;UK&quot;)
 </code></pre>
 
 

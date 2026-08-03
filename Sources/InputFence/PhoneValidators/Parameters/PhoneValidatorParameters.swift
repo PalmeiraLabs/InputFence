@@ -24,6 +24,12 @@ public struct PhoneValidatorParameters {
     /// Defaults to `"US"`.
     public var region: String
 
+    /// Creates parameters using the documented default validation settings.
+    public init() {
+        self.isOnlyNumbersAllowed = Self.defaultIsOnlyNumbersAllowed
+        self.region = Self.defaultRegion
+    }
+
     /// Creates a new instance of `PhoneValidatorParameters`.
     ///
     /// - Parameters:
