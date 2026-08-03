@@ -13,13 +13,16 @@
 
 ## Initializer
 ```swift
+init()
+
 init(isOnlyNumbersAllowed: Bool,
      region: String = Self.defaultRegion)
 ```
 
-The legacy initializer label `isOnlyNumbersAllowd` remains available for source compatibility.
+Use `init()` for the documented defaults. The legacy initializer label `isOnlyNumbersAllowd` remains available for source compatibility.
 
 ## Usage Example
 ```swift
+let defaultParams = PhoneValidatorParameters()
 let params = PhoneValidatorParameters(isOnlyNumbersAllowed: true, region: "UK")
 ```

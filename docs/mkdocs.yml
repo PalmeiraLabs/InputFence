@@ -1,4 +1,7 @@
 site_name: InputFence Documentation
+site_url: https://palmeiralabs.github.io/InputFence/
+docs_dir: docs
+site_dir: site
 theme:
   name: material
 use_directory_urls: false

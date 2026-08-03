@@ -130,11 +130,11 @@ For detailed guides, API reference, and validator specifications, check out the 
      ```
   3. Serve the documentation locally:
      ```bash
-     mkdocs serve
+     mkdocs serve -f docs/mkdocs.yml
      ```
   4. Open `http://127.0.0.1:8000` in your browser.
 
-Documentation source files are located in the [`docs/`](docs/) directory and include:
+Documentation source files are located in the [`docs/docs/`](docs/docs/) directory and include:
 - **Validators** → Usage of each built-in validator.
 - **Protocols** → Interfaces and extension points.
 - **Parameters** → Customization and configuration options.
